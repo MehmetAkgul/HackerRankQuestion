@@ -1,49 +1,39 @@
 package org.warmup;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
- Staircase detail
- This is a staircase of size :
-    #
-   ##
-  ###
- ####
- Its base and height are both equal to . It is drawn using # symbols and spaces. The last line is not preceded by any spaces.
- Write a program that prints a staircase of size .
- Function Description
- Complete the staircase function in the editor below.
- staircase has the following parameter(s):
- Açıklama:
- Bu problemde, verilen bir boyut n için bir merdiven şekli çizmeniz gerekmektedir. Merdiven "#" sembollerinden oluşur ve boşluklar ile yerleştirilir. Merdivenin tabanı ve yüksekliği her ikisi de n eşittir.
-
- Örneğin,
- n =  4
- n=4 için merdiven şu şekilde görünecektir:
-
-    #
-   ##
-  ###
- ####
- Fonksiyon Tanımı:
-
- staircase adında bir fonksiyonu tamamlayacaksınız.
-
- Parametreler:
-
- int n: Bir tam sayı, merdivenin boyutunu belirtir.
+ * Given five positive integers, find the minimum and maximum values that can be calculated by summing exactly four of the five integers. Then print the respective minimum and maximum values as a single line of two space-separated long integers.
+ * Example
+ * <p>
+ * The minimum sum is  and the maximum sum is . The function prints
+ * 16 24
+ * Function Description
+ * Complete the miniMaxSum function in the editor below.
+ * miniMaxSum has the following parameter(s):
+ * arr: an array of  integers
+ * Print
+ * Print two space-separated integers on one line: the minimum sum and the maximum sum of  of elements.
+ * Input Format
+ * A single line of five space-separated integers.
  */
-public class Staircase {
+public class MiniMaxSum {
     public static void main(String[] args) {
-        int n = 6;
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n-i; j++) {
-                System.out.print(" ");
-            }
-            for (int k = 1; k <= i; k++) {
-                System.out.print("#");
-            }
-            System.out.println();
+        List<Integer> arr = new ArrayList<>(List.of(1,3,5,7,9));
+        Collections.sort(arr);
+        long minSum = 0;
+        long maxSum = 0;
+        for (int i = 0; i < 4; i++) {
+            minSum += arr.get(i);
         }
+
+        for (int j = 4; j > 0; j--) {
+            maxSum += arr.get(j);
+        }
+        System.out.println(minSum + " " + maxSum);
+
     }
 
 }
